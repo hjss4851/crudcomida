@@ -15,6 +15,18 @@ namespace receitas
         public Form1()
         {
             InitializeComponent();
+
+                }
+
+        private void receitasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cadastro cad = new cadastro();
+            cad.ShowDialog();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
