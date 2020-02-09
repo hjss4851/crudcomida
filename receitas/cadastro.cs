@@ -165,5 +165,53 @@ namespace receitas
 
             }
         }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            strSql = "update hjss set nome=@nome, rendimento=@rendimento, tempodepreparo=@tempodepreparo, mododepreparo=@mododepreparo, ingredientes=@ingredientes";
+
+            sqlcon = new SqlConnection(strCon);
+
+            SqlCommand comando = new SqlCommand(strSql, sqlcon);
+
+            comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txt_nome.Text;
+            comando.Parameters.Add("@rendimento", SqlDbType.VarChar).Value = txt_rendimento.Text;
+            comando.Parameters.Add("@tempodepreparo", SqlDbType.VarChar).Value = txt_tempo.Text;
+            comando.Parameters.Add("@mododepreparo", SqlDbType.VarChar).Value = txt_modo.Text;
+            comando.Parameters.Add("@ingredientes", SqlDbType.VarChar).Value = txt_itens.Text;
+
+            try
+            {
+                sqlcon.Open();
+
+                comando.ExecuteNonQuery();
+
+                MessageBox.Show("CADASTRO ALTERADO COM SUCESSO");
+
+                
+            }
+
+            catch(Exception ex)
+
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
+            finally
+            {
+
+                sqlcon.Close();
+
+                txt_itens.Clear();
+                txt_modo.Clear();
+                txt_nome.Clear();
+                txt_pesquisa.Clear();
+                txt_rendimento.Clear();
+                txt_tempo.Clear();
+
+            }
+        }
     }
 }
