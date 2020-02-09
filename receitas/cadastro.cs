@@ -213,5 +213,43 @@ namespace receitas
 
             }
         }
+
+        private void btn_excluir_Click(object sender, EventArgs e)
+        {
+            strSql = "delete from hjss where nome=@nome";
+
+            sqlcon = new SqlConnection(strCon);
+
+            SqlCommand comando = new SqlCommand(strSql, sqlcon);
+
+            comando.Parameters.Add("@nome", SqlDbType.VarChar).Value = txt_nome.Text;
+
+            try
+            {
+                sqlcon.Open();
+                comando.ExecuteNonQuery();
+                MessageBox.Show("EXCLUIDO COM SUCESSO");
+            
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                sqlcon.Close();
+
+               
+            }
+
+            txt_itens.Clear();
+            txt_modo.Clear();
+            txt_nome.Clear();
+            txt_pesquisa.Clear();
+            txt_rendimento.Clear();
+            txt_tempo.Clear();
+
+        }
     }
 }

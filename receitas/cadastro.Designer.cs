@@ -193,6 +193,7 @@
             this.btn_excluir.TabIndex = 16;
             this.btn_excluir.Text = "EXCLUIR";
             this.btn_excluir.UseVisualStyleBackColor = true;
+            this.btn_excluir.Click += new System.EventHandler(this.btn_excluir_Click);
             // 
             // cadastro
             // 
